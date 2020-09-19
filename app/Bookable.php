@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bookable extends Model
 {
+  protected $fillable = [
+    'bookable_id',
+    'booking_id',
+  ];
   public function bookings()
   {
     return $this->hasMany(Booking::class);
