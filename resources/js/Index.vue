@@ -4,8 +4,11 @@
             <router-link class="navbar-brand mr-auto" :to="{ name: 'home' }"
                 >LaravelBnb</router-link
             >
-            <router-link class="btn nav-button" :to="{ name: 'second' }"
-                >Second</router-link
+            <router-link class="btn nav-button" :to="{ name: 'basket' }"
+                >Basket
+                <span v-if="itemsInBasket" class="badge badge-secondary">{{
+                    itemsInBasket
+                }}</span></router-link
             >
         </nav>
 
@@ -16,5 +19,12 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+    computed: {
+        ...mapGetters({
+            itemsInBasket: "itemsInBasket"
+        })
+    }
+};
 </script>

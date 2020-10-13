@@ -16,8 +16,8 @@ export default {
     props: {
         title: String,
         description: String,
-        price: String,
-        id: Number
+        price: [String, Number],
+        id: [Number, String]
     }
 };
 </script>

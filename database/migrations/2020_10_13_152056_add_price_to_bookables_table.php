@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookablesTable extends Migration
+class AddPriceToBookablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateBookablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookables', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-
-            $table->string('title')->nullable();
-            // $table->string('price')->nullable();
-            $table->text('description')->nullable();
+        Schema::table('bookables', function (Blueprint $table) {
+            $table->unsignedBigInteger('price');
         });
     }
 
@@ -30,6 +25,8 @@ class CreateBookablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookables');
+        Schema::table('bookables', function (Blueprint $table) {
+            $table->dropColumn('price');
+        });
     }
 }
